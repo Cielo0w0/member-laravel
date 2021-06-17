@@ -53,8 +53,16 @@ class ProductTypeController extends Controller
 
     public function delete(Request $request,$id){
         $old_record =ProductType::find($id);
-        $old_record->delete();
 
-        return redirect('/admin/product/type')->with('message','刪除產品種類成功!');
+        if ( $old_record ->product->count()!=0) {
+            return redirect('/admin/product/type')->with('message',
+            '無法刪除該產品種類!該產品種類內還有'.$old_record->product->count().'比產品品項，請先刪除');
+        }elseif($old_record ->product->count()===0){
+            $old_record->delete();
+            return redirect('/admin/product/type')->with('message','刪除產品種類成功!');
+        }
+
     }
+
+    
 }

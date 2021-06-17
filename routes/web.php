@@ -31,8 +31,14 @@ Route::get('/', function () {
 Route::middleware(['auth','can:admin'])->prefix('/admin')->group(function(){
     Route::get('/home', 'HomeController@index')->name('home');
 
-
-    Route::get('/news', 'NewsController@index');
+    Route::prefix('/news')->group(function(){
+        Route::get('/', 'NewsController@index');
+        Route::get('/create', 'NewsController@create');
+        Route::post('/store', 'NewsController@store');
+        Route::get('/edit/{id}', 'NewsController@edit');
+        Route::post('/update/{id}', 'NewsController@update');
+        Route::delete('/delete/{id}', 'NewsController@delete');
+    });
 
 
     Route::prefix('/product')->group(function(){
@@ -53,6 +59,9 @@ Route::middleware(['auth','can:admin'])->prefix('/admin')->group(function(){
             Route::get('/', 'ProductController@index');
             Route::get('/create', 'ProductController@create');
             Route::post('/store', 'ProductController@store');
+            Route::get('/edit/{id}', 'ProductController@edit');
+            Route::post('/update/{id}', 'ProductController@update');
+            Route::delete('/delete/{id}', 'ProductController@delete');
         });
     });
 

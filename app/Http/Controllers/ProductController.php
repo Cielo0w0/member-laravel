@@ -20,6 +20,7 @@ class ProductController extends Controller
 
     public function index(){
         $lists = Product::get();
+
         return view($this->index,compact('lists'));
     }
 
@@ -32,18 +33,35 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
-        
+
         Product::create($request->all());
 
         return redirect('/admin/product/item')->with('message','新增產品成功!');
     }
 
+    public function edit($id){
+        $record =Product::find($id);
+        $type=ProductType::get();
 
-    // public function create(){
-    //     return view($this->index);
-    // }
+        return view($this->edit,compact('record','type'));
+    }
 
-    // public function edit(){
-    //     return view($this->index);
-    // }
+    public function update(Request $request,$id){
+
+        $old_record=Product::find($id);
+        $old_record->product_name=$request->product_name;
+        $old_record->price=$request->price;
+        $old_record->discript=$request->discript;
+        $old_record->product_type_id=$request->product_type_id;
+        $old_record->save();
+
+        return redirect('/admin/product/item')->with('message','編輯產品成功!');
+    }
+
+    public function delete(Request $request,$id){
+
+        $old_record = Product::find($id);
+        $old_record->delete();
+        return redirect('/admin/product/item')->with('message','刪除產品成功!');
+    }
 }

@@ -37,6 +37,7 @@
                             <thead>
                                 <tr>
                                     <th>產品種類名稱</th>
+                                    <th>產品品項總數</th>
                                     <th>操作</th>
                                 </tr>
                             </thead>
@@ -45,6 +46,7 @@
                                 @foreach ($lists as $item )
                                     <tr>
                                         <td>{{ $item->type_name }}</td>
+                                        <td>{{ $item->product->count() }}</td>
                                         <td>
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{ asset('/admin/product/type/edit') }}/{{$item->id}}">編輯</a>
@@ -63,6 +65,7 @@
                             <tfoot>
                                 <tr>
                                     <th>產品種類名稱</th>
+                                    <th>產品品項總數</th>
                                     <th>操作</th>
                                 </tr>
                             </tfoot>
