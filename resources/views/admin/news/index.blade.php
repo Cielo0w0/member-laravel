@@ -50,7 +50,9 @@
                                         <td>{{ $item->type }}</td>
                                         <td>{{ $item->publish_date }}</td>
                                         <td>{{ $item->title }}</td>
-                                        <td>{{ $item->img }}</td>
+                                        <td>
+                                            <img src="{{ asset($item->img) }}" alt="" style="width:200px">
+                                        </td>
                                         <td>{{ $item->content }}</td>
                                         <td>
                                             <a class="btn btn-primary btn-sm"

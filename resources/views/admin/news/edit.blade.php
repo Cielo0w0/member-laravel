@@ -28,7 +28,7 @@
                         <h2>最新消息編輯'</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{ asset('/admin/news/update') }}/{{ $record->id }}" method="post">
+                        <form action="{{ asset('/admin/news/update') }}/{{ $record->id }}" method="POST"enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">

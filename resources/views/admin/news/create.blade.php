@@ -28,7 +28,7 @@
                         <h2>最新消息新增'</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{ asset('/admin/news/store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ asset('/admin/news/store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
