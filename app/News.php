@@ -11,6 +11,7 @@ class News extends Model
         'announcement'=>'公告',
         'event'=>'活動',
         'promotion'=>'促銷',
+        'major'=>'重大公告'
     ];
 
     protected $fillable = ['type', 'publish_date','title','img','content'];
