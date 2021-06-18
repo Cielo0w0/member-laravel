@@ -13,4 +13,8 @@ class Product extends Model
         return $this->belongsTo(ProductType::class,'product_type_id');
         // =return $this->belongsTo('App\ProductType');
     }
+
+    public function photos(){
+        return $this->hasMany(ProductImg::class,'product_id');
+    }
 }

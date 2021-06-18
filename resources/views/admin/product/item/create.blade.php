@@ -29,7 +29,7 @@
                         <h2>產品品項新增</h2>
                     </div>
                     <div class="card-body">
-                        <form action="{{ asset('/admin/product/item/store') }}" method="post">
+                        <form action="{{ asset('/admin/product/item/store') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -49,6 +49,11 @@
                             <div class="form-group">
                                 <label for="price">價格</label>
                                 <input type="text" class="form-control" id="price" name="price">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="photos">產品內容圖片</label>
+                                <input type="file" multiple class="form-control" id="photos" name="photos[]">
                             </div>
 
                             <div class="form-group">

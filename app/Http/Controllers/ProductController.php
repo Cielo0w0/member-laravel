@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductImg;
 use App\ProductType;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    //
+
     function __construct()
     {
         $this->index ='admin.product.item.index';
@@ -18,11 +19,16 @@ class ProductController extends Controller
 
     }
 
+
+
+
     public function index(){
         $lists = Product::get();
 
         return view($this->index,compact('lists'));
     }
+
+
 
 
     public function create(){
@@ -32,12 +38,32 @@ class ProductController extends Controller
         return view($this->create,compact('type'));
     }
 
-    public function store(Request $request){
 
-        Product::create($request->all());
+
+
+    public function store(Request $request){
+        $new_record = Product::create($request->all());
+
+        if ($request->hasFile('photos')) {
+
+            foreach ($request -> file('photos') as $item) {
+
+                $path = FileController::imageUpload($$item);
+
+                ProductImg::create([
+                    'photo'=>$path,
+                    'product_id'=>$new_record->id,
+                ]);
+            }
+        }
+
+        // Product::create($request->all());
 
         return redirect('/admin/product/item')->with('message','新增產品成功!');
     }
+
+
+
 
     public function edit($id){
         $record =Product::find($id);
@@ -45,6 +71,10 @@ class ProductController extends Controller
 
         return view($this->edit,compact('record','type'));
     }
+
+
+
+
 
     public function update(Request $request,$id){
 
@@ -57,6 +87,10 @@ class ProductController extends Controller
 
         return redirect('/admin/product/item')->with('message','編輯產品成功!');
     }
+
+
+
+
 
     public function delete(Request $request,$id){
 
