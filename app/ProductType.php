@@ -10,7 +10,8 @@ class ProductType extends Model
     protected $fillable = ['type_name'];
 
     public function product(){
-        return $this->hasMany(Product::class);
+
+        return $this->hasMany(Product::class,'product_type_id');
     }
 
 

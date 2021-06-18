@@ -36,6 +36,7 @@ class ProductController extends Controller
         $type=ProductType::get();
 
         return view($this->create,compact('type'));
+
     }
 
 
@@ -45,10 +46,8 @@ class ProductController extends Controller
         $new_record = Product::create($request->all());
 
         if ($request->hasFile('photos')) {
-
             foreach ($request -> file('photos') as $item) {
-
-                $path = FileController::imageUpload($$item);
+                $path = FileController::imageUpload($item);
 
                 ProductImg::create([
                     'photo'=>$path,
@@ -68,8 +67,9 @@ class ProductController extends Controller
     public function edit($id){
         $record =Product::find($id);
         $type=ProductType::get();
+        $photos = $record->photos;
 
-        return view($this->edit,compact('record','type'));
+        return view($this->edit,compact('record','type','photos'));
     }
 
 
