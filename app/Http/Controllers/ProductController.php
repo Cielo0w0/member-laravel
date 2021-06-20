@@ -6,6 +6,7 @@ use App\Product;
 use App\ProductImg;
 use App\ProductType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -97,5 +98,17 @@ class ProductController extends Controller
         $old_record = Product::find($id);
         $old_record->delete();
         return redirect('/admin/product/item')->with('message','刪除產品成功!');
+    }
+
+
+    public function deleteImage(Request $request){
+        // 透過ID找要刪除的資料
+        $old_record = ProductImg::find($request->id);
+        // 判斷該資料是否還存在
+        if (file_exists(public_path().$old_record->photo)) {
+            // 存在的話就執行刪除動作
+            File::delete(public_path().$old_record->photo);
+        }
+        $old_record->delete();
     }
 }

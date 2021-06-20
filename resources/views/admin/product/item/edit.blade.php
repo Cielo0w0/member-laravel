@@ -8,6 +8,21 @@
         .card-header h2{
             margin-bottom: 0
         }
+
+        .del-img-btn{
+            position: absolute;
+            right: 10px;
+            top: -9px;
+            width: 20px;
+            height: 20px;
+            background-color: rgb(252, 76, 76);
+            color: white;
+            text-align: center;
+            font-weight:600;
+            line-height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
     </style>
 @endsection
 
@@ -57,6 +72,9 @@
                                 <label class="col-12" for="">既有產品內容圖片</label>
                                 @foreach ($photos as $item)
                                     <div class="col-md-3">
+                                        {{-- 點選到圖片刪除按鈕時，將該圖片的ID記錄下來，傳到後端 --}}
+                                        {{-- 後端根據ID找到該筆資料，進行刪除 --}}
+                                        <div data-id="{{ $item->id }}" class="del-img-btn">x</div>
                                         <img class="w-100" src="{{ $item->photo }}" alt="">
                                     </div>
                                 @endforeach
@@ -83,5 +101,29 @@
 @endsection
 
 @section('js')
+    <script>
+        $('.del-img-btn').click(function(){
 
+            var id = $(this).attr('data-id')
+            var parent_element = $(this).parent();
+
+            var formdata = new FormData();
+            // append('key',vaule)，有幾筆資料就要做append幾次
+            formdata.append('id',id)
+            formdata.append('_token','{{ csrf_token() }}')
+
+            var yes = confirm('是否確認刪除此圖片?')
+            if (yes) {
+                fetch('/admin/product/item/deleteImage',{
+                    'method' : 'post',
+                    'body':formdata
+                }).then(function(response){
+
+                }).then(function(result){
+                    alert('刪除成功!')
+                    parent_element.remove();
+                });
+            }
+        })
+    </script>
 @endsection

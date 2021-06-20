@@ -62,7 +62,9 @@ Route::middleware(['auth','can:admin'])->prefix('/admin')->group(function(){
             Route::get('/edit/{id}', 'ProductController@edit');
             Route::post('/update/{id}', 'ProductController@update');
             Route::delete('/delete/{id}', 'ProductController@delete');
+            Route::post('/deleteImage','ProductController@deleteImage');
         });
+
     });
 
 
