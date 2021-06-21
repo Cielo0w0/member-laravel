@@ -17,7 +17,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ asset('admin/home') }}">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{ asset('/admin/news') }}">最新消息管理</a></li>
-                <li class="breadcrumb-item active" aria-current="page">最新消息新增'</li>
+                <li class="breadcrumb-item active" aria-current="page">最新消息新增</li>
             </ol>
         </nav>
 

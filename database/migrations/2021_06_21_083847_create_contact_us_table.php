@@ -15,6 +15,10 @@ class CreateContactUsTable extends Migration
     {
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
+            $table->char('name')->comment('姓名');
+            $table->char('email')->comment('信箱');
+            $table->text('subject')->comment('主旨');
+            $table->longText('message')->comment('內文');
             $table->timestamps();
         });
     }

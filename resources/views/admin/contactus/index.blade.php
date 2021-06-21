@@ -45,8 +45,19 @@
                             <tr>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td>{{ $item->title }}</td>
-                                <td></td>
+                                <td>{{ $item->subject }}</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm"
+                                        href="{{ asset('/admin/contactus/seemore') }}/{{$item->id}}">查看更多
+                                    </a>
+
+                                    <form style="display: inline-block"
+                                        action="{{ asset('/admin/contactus/delete') }}/{{$item->id}}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger btn-sm">刪除</button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -68,5 +79,9 @@
 @endsection
 
 @section('js')
-
+<script>
+    $(document).ready(function() {
+        $('#my-datatable').DataTable();
+    });
+</script>
 @endsection

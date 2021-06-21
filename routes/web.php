@@ -82,7 +82,10 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::delete('/user/delete/{id}', 'UserController@delete');
 
     Route::get('/contactus','ContactUsController@index');
-    Route::get('/contactus/seemore','ContactUsController@seemore');
+    Route::post('/contactus/store','ContactUsController@store');
+    Route::get('/contactus/seemore/{id}','ContactUsController@seemore');
+    Route::delete('/contactus/delete/{id}', 'ContactUsController@delete');
+
 
 });
 
