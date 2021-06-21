@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('contact_us', function () {
-    return view('/front/contact_us/index');
-});
+
+// 前端
+Route::get('/contact_us','FrontController@index');
+
+
+
+// 後端
 
 // Route::post('/admin/news', 'NewsController@index');
 // Route::post('/admin/product', 'NewsController@index');
@@ -76,6 +80,10 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::get('/user/edit/{id}', 'UserController@edit');
     Route::post('/user/update/{id}', 'UserController@update');
     Route::delete('/user/delete/{id}', 'UserController@delete');
+
+    Route::get('/contactus','ContactUsController@index');
+    Route::get('/contactus/seemore','ContactUsController@seemore');
+
 });
 
 

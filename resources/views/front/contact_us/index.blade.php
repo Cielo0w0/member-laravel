@@ -17,7 +17,7 @@
 
             <!--Grid column-->
             <div class="col-md-9 mb-md-0 mb-5">
-                <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                <form action="{{ asset('/admin/contact_us/store') }}" id="contact-form" name="contact-form" method="POST">
 
                     <!--Grid row-->
                     <div class="row">
