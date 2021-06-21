@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('contact_us', function () {
+    return view('/front/contact_us/index');
+});
 
 // Route::post('/admin/news', 'NewsController@index');
 // Route::post('/admin/product', 'NewsController@index');
@@ -28,10 +31,10 @@ Route::get('/', function () {
 // });
 
 // 要  登入狀態(=Auth)  &   同時是管理者     ->    才可以用admin群組裡的東西
-Route::middleware(['auth','can:admin'])->prefix('/admin')->group(function(){
+Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::prefix('/news')->group(function(){
+    Route::prefix('/news')->group(function () {
         Route::get('/', 'NewsController@index');
         Route::get('/create', 'NewsController@create');
         Route::post('/store', 'NewsController@store');
@@ -41,9 +44,9 @@ Route::middleware(['auth','can:admin'])->prefix('/admin')->group(function(){
     });
 
 
-    Route::prefix('/product')->group(function(){
+    Route::prefix('/product')->group(function () {
         // 產品管理
-        Route::prefix('/type')->group(function(){
+        Route::prefix('/type')->group(function () {
             // 產品種類管理
             Route::get('/', 'ProductTypeController@index');
             Route::get('/create', 'ProductTypeController@create');
@@ -54,7 +57,7 @@ Route::middleware(['auth','can:admin'])->prefix('/admin')->group(function(){
         });
 
 
-        Route::prefix('/item')->group(function(){
+        Route::prefix('/item')->group(function () {
             // 產品品項管理
             Route::get('/', 'ProductController@index');
             Route::get('/create', 'ProductController@create');
@@ -62,9 +65,8 @@ Route::middleware(['auth','can:admin'])->prefix('/admin')->group(function(){
             Route::get('/edit/{id}', 'ProductController@edit');
             Route::post('/update/{id}', 'ProductController@update');
             Route::delete('/delete/{id}', 'ProductController@delete');
-            Route::post('/deleteImage','ProductController@deleteImage');
+            Route::post('/deleteImage', 'ProductController@deleteImage');
         });
-
     });
 
 
