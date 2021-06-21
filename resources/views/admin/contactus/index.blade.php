@@ -46,17 +46,7 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->title }}</td>
-                                <td>
-                                    <a class="btn btn-primary btn-sm"
-                                        href="{{ asset('/admin/news/edit') }}/{{$item->id}}">編輯</a>
-
-                                    <form style="display: inline-block"
-                                        action="{{ asset('/admin/news/delete') }}/{{$item->id}}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-danger btn-sm">刪除</button>
-                                    </form>
-                                </td>
+                                <td></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -78,9 +68,5 @@
 @endsection
 
 @section('js')
-<script>
-    $(document).ready(function() {
-    $('#my-datatable').DataTable();
-});
-</script>
+
 @endsection
