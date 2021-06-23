@@ -83,8 +83,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="photos">修改產品主要圖片</label>
-                            <input type="file" class="form-control" id="photos" name="photo">
+                            <label for="photo">修改產品主要圖片</label>
+                            <input type="file" class="form-control" id="photo" name="photo">
                         </div>
 
                         <hr>
