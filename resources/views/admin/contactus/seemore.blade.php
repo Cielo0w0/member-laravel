@@ -55,6 +55,8 @@
                         <div class="more-title">內文 : </div>
                         <td>{{ $more->message }}</td>
                     </div>
+
+                    <a href="{{asset('/admin/contactus')}}" class="btn btn-primary">返回</a>
                 </div>
             </div>
         </div>

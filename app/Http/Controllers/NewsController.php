@@ -40,7 +40,7 @@ class NewsController extends Controller
     public function store(Request $request){
         // 如果IMG有檔案
         if ( $request->hasFile('img')) {
-            $path = FileController::imageUpload($request->file('img'));
+            $path = FileController::imageUpload($request->file('img'),'news');
         }
 
         News::create([

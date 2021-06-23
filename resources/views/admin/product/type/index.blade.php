@@ -38,7 +38,7 @@
                                 <tr>
                                     <th>產品種類名稱</th>
                                     <th>產品品項總數</th>
-                                    <th>操作</th>
+                                    <th style="width:100px">操作</th>
                                 </tr>
                             </thead>
 

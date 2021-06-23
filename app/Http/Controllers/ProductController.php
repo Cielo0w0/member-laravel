@@ -44,11 +44,20 @@ class ProductController extends Controller
 
 
     public function store(Request $request){
+        //單圖片
+        $requestData =$request->all();
+        if ($request->hasFile('photo')) {
+            $requestData = FileController::imageUpload($request->file('photo'),'product');
+        }
+
+
+
+        // 多圖片
         $new_record = Product::create($request->all());
 
         if ($request->hasFile('photos')) {
             foreach ($request -> file('photos') as $item) {
-                $path = FileController::imageUpload($item);
+                $path = FileController::imageUpload($item,'product');
 
                 ProductImg::create([
                     'photo'=>$path,
@@ -66,11 +75,11 @@ class ProductController extends Controller
 
 
     public function edit($id){
-        $record =Product::find($id);
+        $record =Product::with('photos')->find($id); //這有with
         $type=ProductType::get();
-        $photos = $record->photos;
-
-        return view($this->edit,compact('record','type','photos'));
+        // $photos = $record->photos;                //就不用這些了
+        // return view($this->edit,compact('record','type','photos'));
+        return view($this->edit,compact('record','type'));
     }
 
 
@@ -110,5 +119,7 @@ class ProductController extends Controller
             File::delete(public_path().$old_record->photo);
         }
         $old_record->delete();
+
+        return 'success';
     }
 }

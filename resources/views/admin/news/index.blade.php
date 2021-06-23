@@ -40,7 +40,7 @@
                                     <th>標題</th>
                                     <th>圖片</th>
                                     <th>內容</th>
-                                    <th>操作</th>
+                                    <th style="width:100px">操作</th>
                                 </tr>
                             </thead>
 

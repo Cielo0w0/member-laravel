@@ -36,7 +36,7 @@
                                 <th>姓名</th>
                                 <th>信箱</th>
                                 <th>主旨</th>
-                                <th>操作</th>
+                                <th style="width:120px">操作</th>
                             </tr>
                         </thead>
 

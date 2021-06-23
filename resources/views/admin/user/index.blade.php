@@ -41,7 +41,7 @@
                                     <th>角色</th>
                                     <th>電話</th>
                                     <th>地址</th>
-                                    <th>操作</th>
+                                    <th style="width:100px">操作</th>
                                 </tr>
                             </thead>
 

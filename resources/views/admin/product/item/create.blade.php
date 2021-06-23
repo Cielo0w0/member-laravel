@@ -52,7 +52,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="photos">產品內容圖片</label>
+                                <label for="photo">產品主要圖片</label>
+                                <input type="file" multiple class="form-control" id="photo" name="photo" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="photos">產品其他圖片</label>
                                 <input type="file" multiple class="form-control" id="photos" name="photos[]">
                             </div>
 

@@ -20,20 +20,11 @@ Route::get('/', function () {
 
 // 前端
 Route::get('/contact_us','FrontController@index');
-
+// user
+Route::post('/contactus/store','ContactUsController@store');
 
 
 // 後端
-
-// Route::post('/admin/news', 'NewsController@index');
-// Route::post('/admin/product', 'NewsController@index');
-
-// // 把admin群組起來
-// Route::prefix('admin')->group(function(){
-//     Route::get('/news', 'NewsController@index');
-//     Route::get('/product', 'NewsController@index');
-// });
-
 // 要  登入狀態(=Auth)  &   同時是管理者     ->    才可以用admin群組裡的東西
 Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -73,18 +64,20 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
         });
     });
 
+    Route::prefix('/user')->group(function (){
+        Route::get('/', 'UserController@index');
+        Route::get('/create', 'UserController@create');
+        Route::post('/store', 'UserController@store');
+        Route::get('/edit/{id}', 'UserController@edit');
+        Route::post('/update/{id}', 'UserController@update');
+        Route::delete('/delete/{id}', 'UserController@delete');
+    });
 
-    Route::get('/user', 'UserController@index');
-    Route::get('/user/create', 'UserController@create');
-    Route::post('/user/store', 'UserController@store');
-    Route::get('/user/edit/{id}', 'UserController@edit');
-    Route::post('/user/update/{id}', 'UserController@update');
-    Route::delete('/user/delete/{id}', 'UserController@delete');
-
-    Route::get('/contactus','ContactUsController@index');
-    Route::post('/contactus/store','ContactUsController@store');
-    Route::get('/contactus/seemore/{id}','ContactUsController@seemore');
-    Route::delete('/contactus/delete/{id}', 'ContactUsController@delete');
+    Route::prefix('/contactus')->group(function (){
+        Route::get('/','ContactUsController@index');
+        Route::get('/seemore/{id}','ContactUsController@seemore');
+        Route::delete('/delete/{id}', 'ContactUsController@delete');
+    });
 
 
 });

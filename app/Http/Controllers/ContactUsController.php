@@ -18,7 +18,6 @@ class ContactUsController extends Controller
 
     public function store(Request $request)
     {
-
         ContactUs::create([
             'name' =>$request->name,
             'email' =>$request->email,
@@ -43,7 +42,6 @@ class ContactUsController extends Controller
         $old_record = ContactUs::find($id);
         $old_record->delete();
         return redirect('/admin/contactus')->with('message','刪除聯絡我們成功!');
-
     }
 
 }

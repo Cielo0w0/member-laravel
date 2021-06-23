@@ -40,7 +40,7 @@
                                     <th>產品名稱</th>
                                     <th>產品價格</th>
                                     <th>產品描述</th>
-                                    <th>操作</th>
+                                    <th style="width:100px">操作</th>
                                 </tr>
                             </thead>
 
