@@ -34,7 +34,7 @@
 
                             <div class="form-group">
                                 <label for="product_type_id">產品種類</label>
-                                <select class="form-control" id="product_type_id" name="product_type_id">
+                                <select class="form-control" id="product_type_id" name="product_type_id" required>
                                     @foreach ($type as $item)
                                         <option value="{{ $item->id }}">{{ $item-> type_name }}</option>
                                     @endforeach
@@ -43,12 +43,12 @@
 
                             <div class="form-group">
                                 <label for="product_name">產品品項名稱</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name">
+                                <input type="text" class="form-control" id="product_name" name="product_name" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="price">價格</label>
-                                <input type="text" class="form-control" id="price" name="price">
+                                <input type="text" class="form-control" id="price" name="price" required>
                             </div>
 
                             <div class="form-group">
@@ -63,7 +63,7 @@
 
                             <div class="form-group">
                                 <label for="discript">產品描述</label>
-                                <textarea class="form-control" name="discript" id="discript" cols="30" rows="10"></textarea>
+                                <textarea class="form-control" name="discript" id="discript" cols="30" rows="10" required></textarea>
                                 {{-- <input type="text" class="form-control" id="discript" name="discript"> --}}
                             </div>
 

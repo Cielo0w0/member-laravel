@@ -19,9 +19,9 @@ Route::get('/', function () {
 
 
 // 前端
-Route::get('/contact_us','FrontController@index');
+Route::get('/contactus','FrontController@contactUs');
 // user
-Route::post('/contactus/store','ContactUsController@store');
+Route::get('/product','FrontController@product');
 
 
 // 後端

@@ -50,7 +50,7 @@
 
                         <div class="form-group">
                             <label for="product_type_id">產品種類</label>
-                            <select class="form-control" id="product_type_id" name="product_type_id">
+                            <select class="form-control" id="product_type_id" name="product_type_id" required>
                                 @foreach ($type as $item)
                                 <option @if($item->id === $record->type->id ) selected @endif
                                     value="{{ $item->id }}">{{ $item->type_name }}</option>
@@ -63,21 +63,19 @@
                         <div class="form-group">
                             <label for="product_name">產品品項名稱</label>
                             <input type="text" class="form-control" id="product_name" name="product_name"
-                                value="{{ $record->product_name }}">
+                                value="{{ $record->product_name }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="price">價格</label>
-                            <input type="text" class="form-control" id="price" name="price"
-                                value="{{ $record->price }}">
+                            <input type="text" class="form-control" id="price" name="price" value="{{ $record->price }}"
+                                required>
                         </div>
 
                         {{-- 單圖片 --}}
                         <div class="form-group row">
                             <label class="col-12" for="">產品主要圖片</label>
                             <div class="col-md-3">
-                                {{-- 點選到圖片刪除按鈕時，將該圖片的ID記錄下來，傳到後端 --}}
-                                {{-- 後端根據ID找到該筆資料，進行刪除 --}}
                                 <img class="w-100" src="{{ $record->photo }}" alt="">
                             </div>
                         </div>
@@ -112,8 +110,8 @@
 
                         <div class="form-group">
                             <label for="discript">產品描述</label>
-                            <textarea class="form-control" name="discript" id="discript" cols="30"
-                                rows="10">{{ $record->discript }}</textarea>
+                            <textarea class="form-control" name="discript" id="discript" cols="30" rows="10"
+                                required>{{ $record->discript }}</textarea>
                             {{-- <input type="text" class="form-control" id="discript" name="discript"> --}}
                         </div>
 
