@@ -75,6 +75,7 @@ Route::middleware(['auth', 'admin'])->prefix('/admin')->group(function () {
 
     Route::prefix('/contactus')->group(function (){
         Route::get('/','ContactUsController@index');
+        Route::post('/store','ContactUsController@store');
         Route::get('/seemore/{id}','ContactUsController@seemore');
         Route::delete('/delete/{id}', 'ContactUsController@delete');
     });
