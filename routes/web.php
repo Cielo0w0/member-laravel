@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 // 前端
 Route::get('/contactus','FrontController@contactUs');
+Route::get('/news','FrontController@newsSummernote');
 // user
 Route::get('/product','FrontController@product');
 

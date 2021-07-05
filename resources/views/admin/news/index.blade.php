@@ -39,7 +39,7 @@
                                     <th>日期</th>
                                     <th>標題</th>
                                     <th>圖片</th>
-                                    <th>內容</th>
+                                    {{-- <th>內容</th> --}}
                                     <th style="width:100px">操作</th>
                                 </tr>
                             </thead>
@@ -53,7 +53,7 @@
                                         <td>
                                             <img src="{{ asset($item->img) }}" alt="" style="width:200px">
                                         </td>
-                                        <td>{{ $item->content }}</td>
+                                        {{-- <td>{{ $item->content }}</td> --}}
                                         <td>
                                             <a class="btn btn-primary btn-sm"
                                                 href="{{ asset('/admin/news/edit') }}/{{$item->id}}">編輯</a>
@@ -75,7 +75,7 @@
                                     <th>日期</th>
                                     <th>標題</th>
                                     <th>圖片</th>
-                                    <th>內容</th>
+                                    {{-- <th>內容</th> --}}
                                     <th>操作</th>
                                 </tr>
                             </tfoot>
